@@ -1,0 +1,10 @@
+version : '2'
+
+services:
+  redis-4.0.9:
+    build: ../../../build/redis/v4.0.9
+    volumes:
+      - ../../../run/data0/redis/v4.0.9:/data
+    hostname: "my-redis"
+    ports:
+      - "16379:6379"
