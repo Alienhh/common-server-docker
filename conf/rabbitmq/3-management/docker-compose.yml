@@ -1,0 +1,14 @@
+version : '2'
+
+services:
+  rabbitmq-latest:
+    build: ../../../build/rabbitmq/3-management
+    volumes:
+      - ../../../run/data0/rabbitmq/3-management:/var/lib/rabbitmq
+      - ./conf/enabled_plugins:/etc/rabbitmq/enabled_plugins
+#    extra_hosts:
+#      - ""
+    hostname: "my-rabbit"
+    ports:
+      - "5673:5673"
+      - "15673:15672"
