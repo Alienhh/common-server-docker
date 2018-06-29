@@ -1,0 +1,27 @@
+version : '2'
+
+services:
+  master-redis:
+    build: ../../../build/redis/master_slave/master
+    volumes:
+      - ../../../run/data0/redis/master_slave/master:/data
+    hostname: "master-redis"
+    ports:
+      - "16380:6379"
+    networks:
+      - redisnet
+  slave-redis:
+    build: ../../../build/redis/master_slave/slave
+    volumes:
+      - ../../../run/data0/redis/master_slave/slave:/data
+      - ./config/slave/redis.conf:/etc/redis/6379.conf
+    hostname: "slave-redis"
+    ports:
+      - "16381:6379"
+    networks:
+      - redisnet
+    links:
+      - "master-redis"
+
+networks:
+  redisnet:
