@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  mysql:
+    build: ../../../build/mysql/v5.7.11
+    restart: always
+    ports:
+      - 3310:3306
+    volumes:
+      - ../../../run/data0/mysql/v5.7.11/data/:/var/lib/mysql
