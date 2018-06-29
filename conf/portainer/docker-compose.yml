@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  portainer:
+    build: ../../build/portainer
+    restart: always
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../../run/data0/portainer:/data
